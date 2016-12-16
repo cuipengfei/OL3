@@ -4,5 +4,6 @@
 
 for repoName in ${repoNames[@]}
 do
-    echo $repoName
+    echo "going to clone: $repoName"
+    git clone "git@github.com:OpenLMIS/$repoName.git" &
 done
