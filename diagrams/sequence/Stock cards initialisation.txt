@@ -1,0 +1,22 @@
+title Stock cards initialisation
+
+actor "Admin" as Admin
+
+participant Ref Data Service
+participant Stock Management Service
+
+Admin->Ref Data Service:Create new facility of facility type X
+
+Ref Data Service->Ref Data Service: Find master product list of facility type X
+
+Ref Data Service->Stock Management Service: Create empty stock cards(For all items in master product list)
+
+Stock Management Service-->Ref Data Service:Creation Status
+
+Ref Data Service-->Admin:Creation Status
+
+note left of Ref Data Service:Assumpon: Creation of facility should be rolled \nback if creation of stock cards fails
+
+note right of Ref Data Service: Assumption: Creation of facility is not allowed \nbefore master product list is set up
+
+#http://sequencediagram.org/index.html?initialData=C4S2BsFMAIGVgPYGMDW0kEMBOATAztCAHZggbgh4agJEBQdGSiW0ARAII4C2xb0GAl1706AB2ygkICUWDQASpABm0ACLUMcSFgBuIJJHGSDMjHLiJU0ALLmMAc0jdIF2Dv2GGw4gFoAfEqqGsBa7noGkABcAMJYkNQwRJAA7tDKTCAUwACe0AiqGdLZebliMAAaDEHqmtoRhgE1IWEekVHQAGLEONDcgsA60GJYCDgArszQFHjyBemZJdBlldUqtaH1npAB8MhodkSOzq7y4dsdcQmD0M5iudCz++jY+AAUnQis5OCEg9wEYh9AZDEZjSbyGbAACUDD21kOxxcbjajSa6xaW3aV2oIFolmo4zwa2CdXOkV8AR8RFi8Vx+PghOJdCICBuUGUc1UzTJqOiHDweHG3DEtEudJoRHyhUWYDyeAAFghxuBegAjGCjcBQXoAHSIaqYaBAqiQErxUvmT2smFwBAyWWZrJuWBADgVXMUGN5DWi0AFQpFkvF1wt0oWxTlhAIzoE2oQKUgeoNKi+MH6s1BowmUyh0cekHk4zEQA
