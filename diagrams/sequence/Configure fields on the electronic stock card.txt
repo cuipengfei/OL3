@@ -1,0 +1,38 @@
+title Configure fields on the electronic stock card
+
+actor "API caller\n(could be implementer calling with curl/wget\n or JS code \nor whatever client side code)" as i
+
+participant "Stock management service" as s
+database "PSQL" as p
+
+note left of s: \n\n1. Query what optional fields are available\n\n
+
+i->s:GET http://domain:port/api/stock-management/configuration/optional-fields
+
+s->p:read
+note left of p:all optional field names has\n been saved in DB during migration
+p-->s:
+
+s-->i:JSON
+
+note left of s: \n\n2. Create a configuration\n\n
+
+i->s: POST http://domain:port/api/stock-management/configuration/optional-fields
+
+s->p: write
+p-->s:
+
+s-->i: Created/Validation Error,Failure, etc
+
+note left of s: \n\n3. Query for existing configuration by \nfacility type and program\n\n
+
+i->s: Get http://domain:port/api/stock-management/configuration/optional-fields?facilityType=xxx&program=yyy
+
+s->p:read
+p-->s:
+
+s-->i: JSON/404, etc
+
+note right of i: \n\n4. Client side consuming configuration\n\n
+
+i->i: 1. decide what input is required from user when creating stock cards\n2. decide what input is required from user when making movements\n3. decide what is displayed and what is hidden when viewing stock cards
