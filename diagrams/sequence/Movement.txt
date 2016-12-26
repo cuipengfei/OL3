@@ -17,7 +17,9 @@ B->S:Create StockEvent
 C->S:Create StockEvent
 D->S:Create StockEvent
 
-note left of S:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nBody for one event could contain movements of multiple products\n(probably needed by physical stock count)
+note left of S#yellow:Those four messages above does not mean they will happen sequentially.\nJust showing the possibilities of where movements could be initiated.
+
+note left of S#yellow:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nOne event could represent movements of multiple products\n(probably needed by physical stock count, which I think is \ngoing to be a batch operation)
 
 loop for each product in the event
 S->DB:Write(+/- SOH)

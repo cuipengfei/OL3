@@ -1,10 +1,10 @@
 title Stock cards initialisation
 
+actor "Admin" as a
+
 actor "Facility User" as u
 
-note right of u:Not sure if stock card initialisation is done\n in a batch when a facility is created by admin\n or is done when user logs movement for a \n product for the first time.\n\n But the internal workings of stock management \n service should be the same for both cases.
-
-actor "Admin" as a
+note right of a#yellow:Not sure if stock card initialisation is done\n in a batch when a facility is created by admin\n or is done when user logs movement for a \n product for the first time.\n\n But the internal workings of stock management \n service should be the same for both cases.
 
 participant "Ref Data Service" as r
 participant "Stock management service" as s
@@ -17,17 +17,19 @@ r->r: Find approved product list of facility type X
 loop for each item in approved product list
 r->s: POST http:\/\/domain:port/api/stock-management/stock-card
 s-->r:Creation Status
-note left of s:alternatively, this could be a batch creation API, \nso that there does not have to be a loop
+note left of s#yellow:alternatively, this could be a batch creation API, like:\nPOST http:\/\/domain:port/api/stock-management/stock-cards \nso that there does not have to be a loop
 end
 
 r-->a:Creation Status
 
-note left of r:Assumpon: Creation of facility should be rolled \nback if creation of stock cards fails
+note left of r:Assumpon: Creation of facility should be rolled \nback if creation of any one stock cards fails
 
 u->s:Make a movement by POST http:\/\/domain:port/api/stock-management/stock-event
 
-s->s:check if stock card exist for \nthe movement's target
+s->s:check if stock card(s) exist for \nthe products in the movement
 
-s->s:create stock card if not exist yet
+s->s:create stock card(s) if not exist yet
+
+note right of s#yellow:If stock card is created when movement of a certain product \nis made for the first time, then the API mentioned above is not necessary.
 
 s-->u:Success/Failure(indicating if movement was made, movement would not have been made if stock card creation failed)
