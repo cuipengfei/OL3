@@ -17,4 +17,4 @@ openlmis-requisition-refUI
 openlmis-rsyslog
 openlmis-template-service
 postgres
-stock-management
+openlmis-stockmanagement

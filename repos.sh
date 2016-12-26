@@ -3,7 +3,7 @@
 services=(
 "openlmis-requisition" "openlmis-referencedata"
 "openlmis-fulfillment" "openlmis-auth"
-"openlmis-notification")
+"openlmis-notification" "openlmis-stockmanagement")
 
 infrastructures=(
 "openlmis-rsyslog" "docker-dev"
