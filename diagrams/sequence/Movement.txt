@@ -1,0 +1,31 @@
+title Movement
+
+participant "ERP file transfer" as A
+
+participant "ERP file transfer" as A
+participant "Ad hoc receipt/issue" as B
+participant "Physical stock count" as C
+participant "Manual Adjustment" as D
+
+participant "Stock management service" as S
+
+database "PSQL" as DB
+
+entryspacing 1.0
+A->S:Create StockEvent
+B->S:Create StockEvent
+C->S:Create StockEvent
+D->S:Create StockEvent
+
+note left of S:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nBody for one event could contain movements of multiple products\n(probably needed by physical stock count)
+
+loop for each product in the event
+S->DB:Write(+/- SOH)
+end
+
+note right of S: Assumption: If movement for any one product \nfails, the whole operation should be rolled back.\nSo the above should be one transaction.
+
+S-->A:Created movements
+S-->B:Created movements
+S-->C:Created movements
+S-->D:Created movements

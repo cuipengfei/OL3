@@ -24,7 +24,7 @@ r-->a:Creation Status
 
 note left of r:Assumpon: Creation of facility should be rolled \nback if creation of stock cards fails
 
-u->s:Make a movement by POST http:\/\/domain:port/api/stock-management/stock-card/[id]/movement
+u->s:Make a movement by POST http:\/\/domain:port/api/stock-management/stock-event
 
 s->s:check if stock card exist for \nthe movement's target
 
