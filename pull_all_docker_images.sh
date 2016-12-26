@@ -14,6 +14,7 @@ images=(
 "openlmis-nginx"
 "dev-ui"
 "openlmis-example-extensions"
+"hauptmedia/proftpd"
 )
 
 for image in ${images[@]}
