@@ -7,7 +7,7 @@ participant "Stock management service" as s
 u->s:Make a movement by POST http:\/\/domain:port/api/stock-management/stock-event
 
 loop for each line item in the stock event
-s->s:check if stock card exist for \nthe product in of line item
+s->s:check if stock card exist for \nthe product in the line item
 
 s->s:create stock card if not exist yet
 
