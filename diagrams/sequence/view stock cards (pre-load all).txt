@@ -1,0 +1,19 @@
+title view stock cards (pre-load all)
+
+actor "API caller" as A
+
+participant "Stock management service" as S
+
+note right of A: 1. View SOH of stock cards (list view)
+
+A->S: GET http:\/\/domain:port/api/stock-management/facility/[facility id]/stock-cards\nquery parameter: program(optional)
+
+S-->A: JSON(with full details of each stock card including line items)
+
+A->A: Display list of stock cards
+
+note right of A: 2. View details of one stock card
+
+A->A: Display selected stock card and its line items
+
+note right of A: since full details of all stock cards were pre-loaded, no more requests will sent here
