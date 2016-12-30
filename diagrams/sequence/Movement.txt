@@ -17,17 +17,15 @@ B->S:Create StockEvent
 C->S:Create StockEvent
 D->S:Create StockEvent
 
-note left of S#yellow:Those four messages above does not mean they will happen sequentially.\nJust showing the possibilities of where movements could be initiated.
+note left of S#yellow:Those four messages above does not mean they will happen sequentially.\nJust showing the possibilities of where movements could be originated from.
 
-note left of S#yellow:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nOne event could represent movements of multiple products\n(probably needed by physical stock count, which I think is \ngoing to be a batch operation)
+note left of S#yellow:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nOne event could contain line items of multiple products of multiple facilities.
 
-loop for each product in the event
+loop for each line item in the event
 S->DB:Write(+/- SOH)
 end
 
-note right of S: Assumption: If movement for any one product \nfails, the whole operation should be rolled back.\nSo the above should be one transaction.
-
-S-->A:Created movements
-S-->B:Created movements
-S-->C:Created movements
-S-->D:Created movements
+S-->A:200/207
+S-->B:200/207
+S-->C:200/207
+S-->D:200/207
