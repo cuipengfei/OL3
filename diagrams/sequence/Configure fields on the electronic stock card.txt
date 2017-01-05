@@ -7,7 +7,7 @@ database "PSQL" as p
 
 note left of s: \n\n1. Query what optional fields are available\n\n
 
-i->s:GET http:\/\/domain:port/api/stock-management/stock-card-template
+i->s:GET http:\/\/domain:port/api/stock-card-template
 
 s->p:read
 p-->s:
@@ -16,7 +16,7 @@ s-->i:JSON(optional fields available to choose from)
 
 note left of s: \n\n2. Create a template\n\n
 
-i->s: POST http:\/\/domain:port/api/stock-management/stock-card-template
+i->s: POST http:\/\/domain:port/api/stock-card-template
 
 s->p: write
 p-->s:
@@ -25,7 +25,7 @@ s-->i: Created/Validation Error,Failure, etc
 
 note left of s: \n\n3. Search for template by \nfacility type and program\n\n
 
-i->s: Get http:\/\/domain:port/api/stock-management/stock-card-template?facilityType=xxx&program=yyy
+i->s: Get http:\/\/domain:port/api/stock-card-template?facilityType=xxx&program=yyy
 
 s->p:read
 p-->s:

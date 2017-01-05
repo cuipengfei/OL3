@@ -19,7 +19,7 @@ D->S:Create StockEvent
 
 note left of S#yellow:Those four messages above does not mean they will happen sequentially.\nJust showing the possibilities of where movements could be originated from.
 
-note left of S#yellow:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-management/stock-event\n\nOne event could contain line items of multiple products of multiple facilities.
+note left of S#yellow:All four messages above:\n\nPOST http:\/\/domain:port/api/stock-event\n\nOne event could contain line items of multiple products of multiple facilities.
 
 loop for each line item in the event
 S->DB:Write(+/- SOH)

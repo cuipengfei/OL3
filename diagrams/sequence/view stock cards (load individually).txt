@@ -6,7 +6,7 @@ participant "Stock management service" as S
 
 note right of A: 1. View SOH of stock cards (list view)
 
-A->S: GET http:\/\/domain:port/api/stock-management/facility/[facility id]/stock-card-summaries\nquery parameter: program(optional)
+A->S: GET http:\/\/domain:port/api/facilities/[facility id]/stock-card-summaries\nquery parameter: program(optional)
 
 S-->A: JSON(summaries only, no line items)
 
@@ -14,7 +14,7 @@ A->A: Display list of stock cards
 
 note right of A: 2. View details of one stock card
 
-A->S: http:\/\/domain:port/api/stock-management/stock-cards/[stock card id]
+A->S: http:\/\/domain:port/api/stock-cards/[stock card id]
 
 S-->A: JSON(full details including line items for one stock card)
 
