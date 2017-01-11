@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 
 images=(
-"requisition"
+"requisition:3.0.0-SNAPSHOT"
 "postgres"
 "rsyslog"
-"requisition-refui"
-"referencedata"
-"auth"
-"notification"
+"requisition-refui:3.0.0-SNAPSHOT"
+"referencedata:3.0.0-SNAPSHOT"
+"auth:3.0.0-SNAPSHOT"
+"notification:3.0.0-SNAPSHOT"
 "dev"
-"fulfillment"
+"fulfillment:3.0.0-SNAPSHOT"
 "nginx"
 "openlmis-nginx"
 "dev-ui"
 "openlmis-example-extensions"
 "hauptmedia/proftpd"
+"stockmanagement:3.0.0-SNAPSHOT"
 )
 
 for image in ${images[@]}
