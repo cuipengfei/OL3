@@ -15,7 +15,7 @@ images=(
 "dev-ui"
 "openlmis-example-extensions"
 "hauptmedia/proftpd"
-"stockmanagement:3.0.0-SNAPSHOT"
+"stockmanagement:1.0.0-SNAPSHOT"
 )
 
 for image in ${images[@]}
