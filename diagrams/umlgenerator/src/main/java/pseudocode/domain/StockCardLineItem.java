@@ -1,12 +1,22 @@
 package pseudocode.domain;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public class StockCardLineItem {
-  private Integer stockOnHand;
+  private Integer movementQuantity;
   private StockMovementReason stockMovementReason;
-  private Integer quantity;
+  private UUID sourceId;
+  private UUID destinationId;
+  private Date occurredDate;
+  private Date noticedDate;
+  private String signature;
+  private String reasonFreeText;
+  private String sourceFreeText;
+  private String destinationFreeText;
+
+  private Integer stockOnHand;
 
   public UUID getStockCardId() {
     return null;
@@ -25,7 +35,7 @@ public class StockCardLineItem {
   }
 
   private Integer recalculateSOH(Integer previousItem) {
-    this.getQuantity();
+    this.getMovementQuantity();
     this.getStockMovementReason();
     return 1;
   }
@@ -42,15 +52,79 @@ public class StockCardLineItem {
     return stockMovementReason;
   }
 
-  public Integer getQuantity() {
-    return quantity;
+  public Integer getMovementQuantity() {
+    return movementQuantity;
   }
 
-  public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+  public void setMovementQuantity(Integer movementQuantity) {
+    this.movementQuantity = movementQuantity;
   }
 
   public void setStockMovementReason(StockMovementReason stockMovementReason) {
     this.stockMovementReason = stockMovementReason;
+  }
+
+  public UUID getSourceId() {
+    return sourceId;
+  }
+
+  public void setSourceId(UUID sourceId) {
+    this.sourceId = sourceId;
+  }
+
+  public UUID getDestinationId() {
+    return destinationId;
+  }
+
+  public void setDestinationId(UUID destinationId) {
+    this.destinationId = destinationId;
+  }
+
+  public Date getNoticedDate() {
+    return noticedDate;
+  }
+
+  public void setNoticedDate(Date noticedDate) {
+    this.noticedDate = noticedDate;
+  }
+
+  public Date getOccurredDate() {
+    return occurredDate;
+  }
+
+  public void setOccurredDate(Date occurredDate) {
+    this.occurredDate = occurredDate;
+  }
+
+  public String getSignature() {
+    return signature;
+  }
+
+  public void setSignature(String signature) {
+    this.signature = signature;
+  }
+
+  public String getReasonFreeText() {
+    return reasonFreeText;
+  }
+
+  public void setReasonFreeText(String reasonFreeText) {
+    this.reasonFreeText = reasonFreeText;
+  }
+
+  public String getSourceFreeText() {
+    return sourceFreeText;
+  }
+
+  public void setSourceFreeText(String sourceFreeText) {
+    this.sourceFreeText = sourceFreeText;
+  }
+
+  public String getDestinationFreeText() {
+    return destinationFreeText;
+  }
+
+  public void setDestinationFreeText(String destinationFreeText) {
+    this.destinationFreeText = destinationFreeText;
   }
 }

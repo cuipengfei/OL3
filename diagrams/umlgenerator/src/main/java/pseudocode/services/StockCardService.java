@@ -37,7 +37,7 @@ public class StockCardService {
     StockCardLineItem previousItem = lineItems.get(0);
     for (int index = 1; index < lineItems.size(); index++) {
       StockCardLineItem lineItem = lineItems.get(index);
-      lineItem.applyToPreviousSOH(previousItem.getQuantity());
+      lineItem.applyToPreviousSOH(previousItem.getMovementQuantity());
       previousItem = lineItem;
     }
 
