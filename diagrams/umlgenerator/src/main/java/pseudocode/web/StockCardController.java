@@ -11,6 +11,6 @@ public class StockCardController {
   private StockCardService stockCardService;
 
   public StockCard getStockCard(UUID stockCardId, Date occurredDate, Date noticedDate) {
-    return stockCardService.findAtDates(stockCardId, occurredDate, noticedDate);
+    return stockCardService.findOnDateAsReportedOnDate(stockCardId, occurredDate, noticedDate);
   }
 }

@@ -7,6 +7,7 @@ public class StockCard {
   private UUID facilityId;
   private UUID programId;
   private UUID productId;
+  private StockEvent originEvent;
 
   private List<StockCardLineItem> lineItems;
 
@@ -44,5 +45,13 @@ public class StockCard {
 
   public void setProductId(UUID productId) {
     this.productId = productId;
+  }
+
+  public StockEvent getOriginEvent() {
+    return originEvent;
+  }
+
+  public void setOriginEvent(StockEvent originEvent) {
+    this.originEvent = originEvent;
   }
 }

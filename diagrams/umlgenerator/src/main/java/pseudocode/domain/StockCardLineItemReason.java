@@ -1,8 +1,8 @@
 package pseudocode.domain;
 
-public class StockMovementReason {
+public class StockCardLineItemReason {
   private String name;
-  private StockMovementType type;
+  private StockCardLineItemReasonType type;
 
   public String getName() {
     return name;
@@ -12,11 +12,11 @@ public class StockMovementReason {
     this.name = name;
   }
 
-  public StockMovementType getType() {
+  public StockCardLineItemReasonType getType() {
     return type;
   }
 
-  public void setType(StockMovementType type) {
+  public void setType(StockCardLineItemReasonType type) {
     this.type = type;
   }
 }

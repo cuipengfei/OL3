@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class StockCardLineItem {
   private Integer movementQuantity;
-  private StockMovementReason stockMovementReason;
+  private StockCardLineItemReason reason;
   private UUID sourceId;
   private UUID destinationId;
   private Date occurredDate;
@@ -15,6 +15,7 @@ public class StockCardLineItem {
   private String reasonFreeText;
   private String sourceFreeText;
   private String destinationFreeText;
+  private StockEvent originEvent;
 
   private Integer stockOnHand;
 
@@ -36,7 +37,7 @@ public class StockCardLineItem {
 
   private Integer recalculateSOH(Integer previousItem) {
     this.getMovementQuantity();
-    this.getStockMovementReason();
+    this.getReason();
     return 1;
   }
 
@@ -48,8 +49,8 @@ public class StockCardLineItem {
     return stockOnHand;
   }
 
-  public StockMovementReason getStockMovementReason() {
-    return stockMovementReason;
+  public StockCardLineItemReason getReason() {
+    return reason;
   }
 
   public Integer getMovementQuantity() {
@@ -60,8 +61,8 @@ public class StockCardLineItem {
     this.movementQuantity = movementQuantity;
   }
 
-  public void setStockMovementReason(StockMovementReason stockMovementReason) {
-    this.stockMovementReason = stockMovementReason;
+  public void setReason(StockCardLineItemReason reason) {
+    this.reason = reason;
   }
 
   public UUID getSourceId() {
@@ -126,5 +127,13 @@ public class StockCardLineItem {
 
   public void setDestinationFreeText(String destinationFreeText) {
     this.destinationFreeText = destinationFreeText;
+  }
+
+  public StockEvent getOriginEvent() {
+    return originEvent;
+  }
+
+  public void setOriginEvent(StockEvent originEvent) {
+    this.originEvent = originEvent;
   }
 }

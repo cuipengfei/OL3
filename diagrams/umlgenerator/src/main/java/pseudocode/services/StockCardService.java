@@ -29,7 +29,8 @@ public class StockCardService {
     }
   }
 
-  public StockCard findAtDates(UUID stockCardId, Date occurredDate, Date noticedDate) {
+  public StockCard findOnDateAsReportedOnDate(
+          UUID stockCardId, Date occurredDate, Date noticedDate) {
     List<StockCardLineItem> lineItems = stockCardLineItemsRepository
             .findBy(stockCardId, occurredDate, noticedDate);
     lineItems = orderBy(lineItems, occurredDate, noticedDate);
