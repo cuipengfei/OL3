@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 public class StockCardLineItem {
-  private Integer movementQuantity;
+  private StockCard stockCard;
+  private Integer quantity;
   private StockCardLineItemReason reason;
   private UUID sourceId;
   private UUID destinationId;
@@ -31,14 +32,10 @@ public class StockCardLineItem {
     return null;
   }
 
-  public void applyToPreviousSOH(Integer previousQuantity) {
-    setStockOnHand(recalculateSOH(previousQuantity));
-  }
-
-  private Integer recalculateSOH(Integer previousItem) {
-    this.getMovementQuantity();
+  public void applyToPreviousStockOnHand(Integer previousQuantity) {
+    this.getQuantity();
     this.getReason();
-    return 1;
+    setStockOnHand(1);
   }
 
   public void setStockOnHand(Integer stockOnHand) {
@@ -53,12 +50,12 @@ public class StockCardLineItem {
     return reason;
   }
 
-  public Integer getMovementQuantity() {
-    return movementQuantity;
+  public Integer getQuantity() {
+    return quantity;
   }
 
-  public void setMovementQuantity(Integer movementQuantity) {
-    this.movementQuantity = movementQuantity;
+  public void setQuantity(Integer quantity) {
+    this.quantity = quantity;
   }
 
   public void setReason(StockCardLineItemReason reason) {
@@ -135,5 +132,9 @@ public class StockCardLineItem {
 
   public void setOriginEvent(StockEvent originEvent) {
     this.originEvent = originEvent;
+  }
+
+  public void setStockCard(StockCard stockCard) {
+    this.stockCard = stockCard;
   }
 }

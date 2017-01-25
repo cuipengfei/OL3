@@ -2,7 +2,6 @@ package pseudocode.services;
 
 import pseudocode.domain.StockCard;
 import pseudocode.domain.StockCardLineItem;
-import pseudocode.repositories.StockCardLineItemsRepository;
 import pseudocode.repositories.StockCardsRepository;
 
 import java.util.Date;
@@ -11,43 +10,42 @@ import java.util.UUID;
 
 public class StockCardService {
   private StockCardsRepository stockCardsRepository;
-  private StockCardLineItemsRepository stockCardLineItemsRepository;
 
   public void save(List<StockCardLineItem> stockCardLineItems) {
     for (StockCardLineItem stockCardLineItem : stockCardLineItems) {
       UUID cardId = stockCardLineItem.getStockCardId();
+      StockCard stockCard = stockCardsRepository.findOne(cardId);
 
-      initStockCard(stockCardLineItem, cardId);
+      if (isFirstLineItem(stockCard)) {
+        stockCard = StockCard.createFrom(stockCardLineItem);
+      }
 
-      stockCardLineItemsRepository.save(stockCardLineItem);
+      stockCardsRepository.save(stockCard);
     }
   }
 
-  private void initStockCard(StockCardLineItem stockCardLineItem, UUID cardId) {
-    if (cardId == null || stockCardsRepository.findOne(cardId) == null) {
-      stockCardsRepository.save(StockCard.createFrom(stockCardLineItem));
-    }
+  private boolean isFirstLineItem(StockCard stockCard) {
+    return stockCard == null;
   }
 
   public StockCard findOnDateAsReportedOnDate(
           UUID stockCardId, Date occurredDate, Date noticedDate) {
-    List<StockCardLineItem> lineItems = stockCardLineItemsRepository
-            .findBy(stockCardId, occurredDate, noticedDate);
-    lineItems = orderBy(lineItems, occurredDate, noticedDate);
+    StockCard stockCard = stockCardsRepository.findOne(stockCardId, occurredDate, noticedDate);
 
-    StockCardLineItem previousItem = lineItems.get(0);
-    for (int index = 1; index < lineItems.size(); index++) {
-      StockCardLineItem lineItem = lineItems.get(index);
-      lineItem.applyToPreviousSOH(previousItem.getMovementQuantity());
+    List<StockCardLineItem> orderedLineItems =
+            orderByOccurredThenNoticed(stockCard.getLineItems(), occurredDate, noticedDate);
+
+    StockCardLineItem previousItem = orderedLineItems.get(0);
+    for (int index = 1; index < orderedLineItems.size(); index++) {
+      StockCardLineItem lineItem = orderedLineItems.get(index);
+      lineItem.applyToPreviousStockOnHand(previousItem.getQuantity());
       previousItem = lineItem;
     }
 
-    StockCard stockCard = stockCardsRepository.findOne(stockCardId);
-    stockCard.setLineItems(lineItems);
     return stockCard;
   }
 
-  private List<StockCardLineItem> orderBy
+  private List<StockCardLineItem> orderByOccurredThenNoticed
           (List<StockCardLineItem> lineItems, Date occurredDate, Date noticedDate) {
     return null;
   }

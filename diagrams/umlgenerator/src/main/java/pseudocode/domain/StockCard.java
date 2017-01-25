@@ -12,7 +12,9 @@ public class StockCard {
   private List<StockCardLineItem> lineItems;
 
   public static StockCard createFrom(StockCardLineItem lineItem) {
-    return null;
+    StockCard stockCard = new StockCard();
+    lineItem.setStockCard(stockCard);
+    return stockCard;
   }
 
   public void setLineItems(List<StockCardLineItem> lineItems) {
