@@ -25,7 +25,7 @@ public class StockCardLineItem {
   }
 
   public StockCard getStockCard() {
-    return new StockCard();
+    return stockCard;
   }
 
   public static List<StockCardLineItem> createFrom(StockEvent savedEvent) {

@@ -13,6 +13,7 @@ public class StockCard {
 
   public static StockCard createFrom(StockCardLineItem lineItem) {
     StockCard stockCard = new StockCard();
+    stockCard.setOriginEvent(lineItem.getOriginEvent());
     lineItem.setStockCard(stockCard);
     return stockCard;
   }
