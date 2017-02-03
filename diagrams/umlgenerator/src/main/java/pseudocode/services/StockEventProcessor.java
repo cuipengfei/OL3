@@ -4,8 +4,6 @@ import pseudocode.domain.StockCardLineItem;
 import pseudocode.domain.StockEvent;
 import pseudocode.repositories.StockEventsRepository;
 
-import java.util.List;
-
 public class StockEventProcessor {
   private StockEventsRepository stockEventsRepository;
   private StockEventValidationsService stockEventValidationsService;
@@ -19,8 +17,7 @@ public class StockEventProcessor {
   //granularity of transaction
   private StockEvent saveEventAndGenerateLineItems(StockEvent event) {
     StockEvent savedEvent = stockEventsRepository.save(event);
-    List<StockCardLineItem> stockCardLineItems = StockCardLineItem.createFrom(savedEvent);
-    stockCardService.save(stockCardLineItems);
+    stockCardService.save(StockCardLineItem.createFrom(savedEvent));
 
     return savedEvent;
   }

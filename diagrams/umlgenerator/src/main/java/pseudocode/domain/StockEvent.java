@@ -89,11 +89,23 @@ public class StockEvent {
 
   private Integer quantity;
   private StockCardLineItemReason reason;
+
+  private StockCard stockCard;
+  private UUID facilityId;
+  private UUID programId;
+  private UUID orderableId;
+
+  private UUID userId;
+
   private UUID sourceId;
   private UUID destinationId;
+
   private Date occurredDate;
   private Date noticedDate;
+  private Date savedDate;
+
   private String signature;
+
   private String reasonFreeText;
   private String sourceFreeText;
   private String destinationFreeText;
@@ -102,5 +114,53 @@ public class StockEvent {
     StockCardLineItem stockCardLineItem = new StockCardLineItem();
     stockCardLineItem.setOriginEvent(this);
     return Arrays.asList(stockCardLineItem);
+  }
+
+  public UUID getUserId() {
+    return userId;
+  }
+
+  public void setUserId(UUID userId) {
+    this.userId = userId;
+  }
+
+  public Date getSavedDate() {
+    return savedDate;
+  }
+
+  public void setSavedDate(Date savedDate) {
+    this.savedDate = savedDate;
+  }
+
+  public StockCard getStockCard() {
+    return stockCard;
+  }
+
+  public void setStockCard(StockCard stockCard) {
+    this.stockCard = stockCard;
+  }
+
+  public UUID getFacilityId() {
+    return facilityId;
+  }
+
+  public void setFacilityId(UUID facilityId) {
+    this.facilityId = facilityId;
+  }
+
+  public UUID getProgramId() {
+    return programId;
+  }
+
+  public void setProgramId(UUID programId) {
+    this.programId = programId;
+  }
+
+  public UUID getOrderableId() {
+    return orderableId;
+  }
+
+  public void setOrderableId(UUID orderableId) {
+    this.orderableId = orderableId;
   }
 }

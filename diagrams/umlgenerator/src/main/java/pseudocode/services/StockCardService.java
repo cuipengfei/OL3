@@ -28,7 +28,7 @@ public class StockCardService {
     return stockCard == null;
   }
 
-  public StockCard findOnDateAsReportedOnDate(
+  public StockCard findThroughOccurredDateAsReportedOnDate(
           UUID stockCardId, Date occurredDate, Date noticedDate) {
     StockCard stockCard = stockCardsRepository.findOne(stockCardId, occurredDate, noticedDate);
 

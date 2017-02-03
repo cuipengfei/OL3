@@ -6,7 +6,7 @@ import java.util.UUID;
 public class StockCard {
   private UUID facilityId;
   private UUID programId;
-  private UUID productId;
+  private UUID orderableId;
   private StockEvent originEvent;
 
   private List<StockCardLineItem> lineItems;
@@ -42,12 +42,12 @@ public class StockCard {
     this.programId = programId;
   }
 
-  public UUID getProductId() {
-    return productId;
+  public UUID getOrderableId() {
+    return orderableId;
   }
 
-  public void setProductId(UUID productId) {
-    this.productId = productId;
+  public void setOrderableId(UUID orderableId) {
+    this.orderableId = orderableId;
   }
 
   public StockEvent getOriginEvent() {
