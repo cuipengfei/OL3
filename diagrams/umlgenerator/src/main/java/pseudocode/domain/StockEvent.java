@@ -90,7 +90,7 @@ public class StockEvent {
   private Integer quantity;
   private StockCardLineItemReason reason;
 
-  private StockCard stockCard;
+  private UUID stockCardId;
   private UUID facilityId;
   private UUID programId;
   private UUID orderableId;
@@ -132,14 +132,6 @@ public class StockEvent {
     this.savedDate = savedDate;
   }
 
-  public StockCard getStockCard() {
-    return stockCard;
-  }
-
-  public void setStockCard(StockCard stockCard) {
-    this.stockCard = stockCard;
-  }
-
   public UUID getFacilityId() {
     return facilityId;
   }
@@ -162,5 +154,13 @@ public class StockEvent {
 
   public void setOrderableId(UUID orderableId) {
     this.orderableId = orderableId;
+  }
+
+  public UUID getStockCardId() {
+    return stockCardId;
+  }
+
+  public void setStockCardId(UUID stockCardId) {
+    this.stockCardId = stockCardId;
   }
 }
