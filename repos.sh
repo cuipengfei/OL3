@@ -7,8 +7,8 @@ services=(
 
 infrastructures=(
 "openlmis-rsyslog" "docker-dev"
-"postgres" "nginx-proxy"
-"openlmis-nginx")
+"postgres" "nginx-proxy" "dev-ui"
+"openlmis-nginx" "openlmis-reference-ui")
 
 tests=("openlmis-contract-tests")
 
