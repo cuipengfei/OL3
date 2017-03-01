@@ -12,7 +12,7 @@ infrastructures=(
 
 tests=("openlmis-contract-tests")
 
-devops=("openlmis-deployment" "openlmis-blue")
+devops=("openlmis-deployment" "openlmis-blue" "openlmis-ref-distro")
 
 examples=(
 "openlmis-example" "openlmis-template-service"

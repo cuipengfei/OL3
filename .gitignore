@@ -15,6 +15,7 @@ openlmis-referencedata
 openlmis-requisition
 openlmis-requisition-refUI
 openlmis-reference-ui
+openlmis-ref-distro
 openlmis-rsyslog
 openlmis-template-service
 postgres
