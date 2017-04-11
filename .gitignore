@@ -21,3 +21,4 @@ openlmis-rsyslog
 openlmis-template-service
 postgres
 openlmis-stockmanagement
+openlmis-requisition-ui

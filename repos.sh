@@ -18,7 +18,7 @@ examples=(
 "openlmis-example" "openlmis-template-service"
 "openlmis-example-extensions")
 
-ui=("openlmis-requisition-refUI"  "dev-ui" "openlmis-stockmanagement-ui")
+ui=("openlmis-requisition-refUI"  "dev-ui" "openlmis-stockmanagement-ui" "openlmis-requisition-ui")
 
 config=("openlmis-config")
 
